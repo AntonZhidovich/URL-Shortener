@@ -8,3 +8,18 @@ async function OnRegenerateBtn() {
     })).json();
     document.getElementById("shortUrlIn").value = newShortUrl;
 }
+
+function UrlIsValid() {
+
+    let urlIn = document.getElementById("fullUrlIn");
+    let fullUrl = urlIn.value;
+    try {
+        new URL(fullUrl);
+    }
+    catch (e) {
+        urlIn.style.borderColor = "red";
+        return false;
+    }
+
+    return true;
+}
