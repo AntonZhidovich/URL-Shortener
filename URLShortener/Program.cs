@@ -10,8 +10,6 @@ static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllersWithViews();
-        //builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(
-        //    builder.Configuration.GetConnectionString("SQLServerConnection")));
         builder.Services.AddDbContext<AppDBContext>(options => options.UseMySql(
             builder.Configuration.GetConnectionString("MariaDBConnection"),
 			new MySqlServerVersion(new Version(10, 3, 39))));

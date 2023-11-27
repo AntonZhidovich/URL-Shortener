@@ -18,6 +18,7 @@ function UrlIsValid() {
     }
     catch (e) {
         urlIn.style.borderColor = "red";
+        document.getElementById("urlErrorAlert").style.display = "block";
         return false;
     }
 

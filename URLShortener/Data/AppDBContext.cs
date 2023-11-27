@@ -7,8 +7,6 @@ namespace URLShortenerApp.Data
     {
         public DbSet<URL> URLs { get; set; } = null!;
 
-        public AppDBContext(DbContextOptions<AppDBContext> contextOptions) : base(contextOptions)
-        {
-        }
+        public AppDBContext(DbContextOptions<AppDBContext> contextOptions) : base(contextOptions) {}
     }
 }
