@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var uRLs = ViewBag.uRLs;
+}
+
+<div>
+    <form>
+        <button class="btn btn-primary" id="btnCreate" asp-controller="Home" asp-action="Create">Generate URL</button>
+    </form>
+</div>
+<hr/>
+<div class = "container">
+    <table class="table table-bordered scrollable" style="width:100%">
+     <thead>
+         <tr>
+         <th>full URL</th>
+         <th>Short URL</th>
+         <th>Clicks</th>
+         <th>Created</th>
+         <th></th>
+         </tr>
+     </thead>
+     <tbody>
+
+            @foreach (var u in uRLs)
+        {
+            <tr>
+                    <td width="40%"><a class="link-secondary" href="@u.FullURL">@u.FullURL</a></td>
+                    <td width="20%"><a class="link-warning" asp-controller="Home" asp-action="RedirectFromShortUrl" asp-route-id="@u.Id">
+                        @u.ShortURL
+                        </a></td>
+                    <td width="10%">@u.Clicks</td>
+                    <td width="10%">@u.Created.ToString("D")</td>
+                <td width="15%">
+                    <div>
+                    <form method="post">
+                    <button class="btn btn-success" formmethod="get" asp-action="Update" asp-route-id="@u.Id">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger" onclick="return confirmDelete();" asp-controller="Home" asp-action="Delete" asp-route-id="@u.Id">
+                        Delete
+                    </button>
+                    </form >
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+ </table>
+</div>

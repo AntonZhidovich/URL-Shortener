@@ -1,0 +1,39 @@
+﻿@model URL
+@{
+	ViewBag.IsCreating = true;
+}
+
+<form method="post">
+	<div class="border p-4 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-secondary">Generate Short URL</h2>
+		</div>
+		<input asp-for="Id" type="hidden" id="idIn" />
+		<input asp-for="Clicks" type="hidden" id="clicksIn" />
+		<div class="mb-3">
+			<label asp-for="FullURL"></label>
+			<input type="text" asp-for="FullURL" class="form-control" required/>
+		</div>
+		<div class="mb-3 row">
+			<div class="col">
+				<label asp-for="ShortURL"></label>
+				<input type="text" asp-for="ShortURL" class="form-control" id="shortUrlIn" required/>
+			</div>
+			<div class="col">
+				<label asp-for="Created"></label>
+				<input type="text" asp-for="Created" class="form-control" required readonly/>
+			</div>
+		</div>
+		<div class="mb-3">
+			<button class="btn btn-success" type="submit">
+				Save
+			</button>
+			<button class="btn btn-primary" type="button" onclick="OnRegenerateBtn();" formnovalidate>
+				Regenerate
+			</button>
+			<button class="btn btn-danger" asp-controller="Home" asp-action="Index" formnovalidate>
+				Close
+			</button>
+		</div>
+	</div>
+</form>
